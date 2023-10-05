@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="Mini-DALLE3: Interactive Text to Image Generation by Prompting Large Language Models">
+    <meta name="keywords" content="text-to-image generation, Large Language Models, scene synthesis">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mini DALL•E 3</title>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="icon" href="./static/images/logo.png">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <link rel="stylesheet" href="./static/css/index-gradio.css">
+    <link rel="stylesheet" href="./static/css/live_theme.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title"
+                            style="display: flex;flex-direction: row;align-items: center;justify-content: center;margin-bottom: 5px;">
+                            <!-- <img src="./static/images/logo.png" width="90" height="90" style="margin-right: 10px;"> -->
+                            Mini
+                            DALL•E 3:
+                        </h1>
+                        <h1 class="title is-2 publication-title">Interactive Text to Image Generation by </br> Prompting
+                            Large
+                            Language Models</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://zeqiang-lai.github.io/">Zeqiang Lai</a>,</span>
+                            <span class="author-block">
+                                <a href="https://whai362.github.io/">Wenhai Wang</a></sup>
+                        </div>
+
+                        <div class="is-size-5 publication-authors" style="margin-top: 10px;">
+                            <span class="author-block">Experimental Projects (In Progress) </span>
+                        </div>
+
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/pdf/2309.05519.pdf"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+
+                                <span class="link-block">
+                                    <a href="https://7d83cfa205b1f79ea8.gradio.live" target="_blank"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fa fa-laugh"></i>
+                                        </span>
+                                        <span>Demo</span>
+                                    </a>
+                                </span>
+
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/NExT-GPT/NExT-GPT"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+
+
+                                <!-- Video Link. -->
+                                <!-- <span class="link-block">
+                                    <a href="https://www.youtube.com/watch?v=aqw2SCWeWD0"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-youtube"></i>
+                                        </span>
+                                        <span>Video</span>
+                                    </a>
+                                </span> -->
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-2">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            The revolution of artificial content generation have been rapidly accelerated with the booming text to image (T2I) diffusion models. It was unprecedentedly of high-quality, diversity, and creativity that the state-of-the-art models could generate, after only less than two years of development. However, it is unfortunately that most of existing T2I models, e.g., Midjourney, Stable Diffusion, still could not be effectively communicated with natural language. This typically makes a engaging image hard to obtain without expertises in complex prompting tuning with wired words compositions, magic tags, and annotations. 
+                            Inspired by the recently released DALLE3 - a T2I model directly built-in ChatGPT that talks human language, we revisit the existing techniques endeavoring to align human intent and introduce a new task - <b>interactive text to image</b> (iT2I), where pepole can interact with LLM for interleaved high-quality image generation and question answering with stronger images and text corrspondences using natural language.
+                            In addressing the iT2I problem, we also present a simple approach that augments LLMs for iT2I with prompting techniques and off-the-shelf T2I models. 
+                            We evaluate our approach for iT2I in a variety of common use scenarios under different LLMs, e.g., ChatGPT, LLAMA, Baichuan. We demonstrate that our approach could be a convenient and low-cost way to introduce the iT2I ability for any existing LLMs and any text to image models without any training, while brings little degradation on LLMs' inherent capabilities in, e.g., question answering and code generation. 
+                            We hope this work could draw broder attentions and provide inspirations for boosting user experience in human-machine interactions alongside with the image quality of the next generation T2I models.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Paper video. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-2">Video Presentation</h2>
+                    <div class="publication-video">
+                        <iframe src="static/Mini-DALLE3-Demo.mp4" frameborder="0"
+                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <!--/ Paper video. -->
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="container is-max-desktop">
+
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-2">Examples</h2>
+                <br>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <!--        <h2 class="title is-3">Generated Images</h2>-->
+                    <!--            Example-1-->
+                    <!-- <h3 class="title is-4">• Example</h3> -->
+                    <div class="content has-text-justified">
+
+                        <div class="wrapper svelte-nab2ao"
+                            style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #44948d;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                            <div class="message-wrap svelte-1uvwjgr">
+
+                                <div class="message-row user-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Can you generate a cute dog?
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Sure, here is a cute dog for you: </p>
+                                            <img style="display: inline-block;width: 250px;max-height: 400px;"
+                                                src="./static/images/demo2/image/image-1.png">
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row user-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Cool! Could you make some sticker? </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Sure, here is a sticker of a cute dog for you: </p>
+                                            <img style="display: inline-block;width: 250px;max-height: 400px;"
+                                                src="./static/images/demo2/image/image-2.png">
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row user-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr latest" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Good! Can you make it run near the river? </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr latest" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Sure, here it is: </p>
+                                            <img style="display: inline-block;width: 250px;max-height: 400px;"
+                                                src="./static/images/demo2/image/image-3.png">
+                                        </span>
+                                    </div>
+                                </div>
+
+
+                                <div class="message-row user-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Don't be a sticker </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Apologies for the confusion. Here is an image of a cute dog running near
+                                                a serene river: </p>
+                                            <img style="display: inline-block;width: 250px;max-height: 400px;"
+                                                src="./static/images/demo2/image/image-4.png">
+                                        </span>
+                                    </div>
+                                </div>
+
+
+                                <div class="message-row user-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Can you show this dog's house ? </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Certainly! Here is an image of a cute dog's house: </p>
+                                            <img style="display: inline-block;width: 250px;max-height: 400px;"
+                                                src="./static/images/demo2/image/image-5.png">
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row user-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Don't be a 3D model! </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Apologies for the confusion. Here is a description of the cute dog's
+                                                house: The cute dog's house is a cozy little wooden cabin with a red
+                                                roof. It has a small porch with a dog bed and a bowl of water. The house
+                                                is surrounded by a beautiful garden with colorful flowers and a fenced
+                                                yard for the dog to play in.
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row user-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Can you turn this description into an image? </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Certainly! Here is an image based on the description of the cute dog's
+                                                house:
+                                            </p>
+                                            <img style="display: inline-block;width: 250px;max-height: 400px;"
+                                                src="./static/images/demo2/image/image-6.png">
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row user-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Where is the dog? </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Apologies for the oversight. Here is an updated image that includes the
+                                                dog in the scene:
+                                            </p>
+                                            <img style="display: inline-block;width: 250px;max-height: 400px;"
+                                                src="./static/images/demo2/image/image-7.png">
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+
+            <!--    <div class="columns is-centered has-text-centered">-->
+            <!--        <h2 class="title is-2">Demonstrations</h2>-->
+            <!--      <br>-->
+            <!--    </div>-->
+
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">Related Links</h2>
+
+                    <div class="content has-text-justified">
+                        <p>
+                            You may refer to related work that serves as foundations for our framework and code
+                            repository,
+                            <a href="https://stability.ai/stable-diffusion">Stable
+                                Diffusion XL</a>,
+                            <a href="https://next-gpt.github.io/">NExT-GPT</a>,
+                            <a href="https://openai.com/dall-e-3">DALL•E 3</a>,
+                            <a href="https://openai.com/chatgpt">ChatGPT</a>,
+                            and <a href="https://github.com/tencent-ailab/IP-Adapter">IP-Adapter</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@misc{minidalle3,
+                author={Zeqiang Lai, Wenhai Wang},
+                title={Mini-DALLE3: Interactive Text to Image Generation by Prompting Large Language Models},
+                year={2023},
+                url={https://github.com/Zeqiang-Lai/Mini-DALLE3},
+            }
+</code></pre>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p style="text-align: center;">
+                            The webpage is built based on <a href="https://next-gpt.github.io/">NExT-GPT</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
