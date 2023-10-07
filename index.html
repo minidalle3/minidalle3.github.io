@@ -50,8 +50,7 @@
                     <div class="column has-text-centered">
                         <h1 class="title is-1 publication-title"
                             style="display: flex;flex-direction: row;align-items: center;justify-content: center;margin-bottom: 5px;">
-                            <!-- <img src="./static/images/logo.png" width="90" height="90" style="margin-right: 10px;"> -->
-                            Mini
+                            <span style="color: coral;">Mini-</span>
                             DALL•E 3:
                         </h1>
                         <h1 class="title is-2 publication-title">Interactive Text to Image Generation by </br> Prompting
@@ -59,13 +58,29 @@
                             Language Models</h1>
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">
-                                <a href="https://zeqiang-lai.github.io/">Zeqiang Lai</a>,</span>
+                                <a href="https://zeqiang-lai.github.io/">Zeqiang Lai</a><sup>1</sup>,
+                            </span>
                             <span class="author-block">
-                                <a href="https://whai362.github.io/">Wenhai Wang</a></sup>
+                                <a href="https://scholar.google.com/citations?user=02RXI00AAAAJ&hl=en">Xizhou Zhu</a><sup>34</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://jifengdai.org/">Jifeng Dai</a><sup>34</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=en">Yu Qiao</a><sup>4</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://whai362.github.io/">Wenhai Wang</a><sup>2</sup>,
+                            </span>
                         </div>
 
                         <div class="is-size-5 publication-authors" style="margin-top: 10px;">
-                            <span class="author-block">Experimental Projects (In Progress) </span>
+                            <span class="author-block"><sup>1</sup>Beijing Institute of Technology, <sup>2</sup>CUHK, <sup>3</sup>Tsinghua University,
+                                <sup>4</sup>Shanghai AI Laboratory</span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors" style="margin-top: 10px;">
+                            <span class="author-block">(Work in Progress)</span>
                         </div>
 
 
@@ -73,8 +88,7 @@
                             <div class="publication-links">
                                 <!-- PDF Link. -->
                                 <span class="link-block">
-                                    <a href="#"
-                                        class="external-link button is-normal is-rounded is-dark">
+                                    <a href="#" class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="fas fa-file-pdf"></i>
                                         </span>
@@ -122,8 +136,28 @@
                 </div>
             </div>
         </div>
-    </section>  
-  
+    </section>
+
+
+    <section class="section" style="padding-top: 0px;">
+        <div class="container is-max-desktop">
+            <!-- Paper video. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <!-- <h2 class="title is-2">Video</h2> -->
+                    <div class="publication-video">
+                        <video width="100%" controls autoplay>
+                            <source src="static/minidalle3.mp4" type="video/mp4">
+                        </video>
+                        <!-- <iframe src="static/minidalle3.mp4"  border: 0">  frameborder="0"
+                            allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+                    </div>
+                </div>
+            </div>
+            <!--/ Paper video. -->
+        </div>
+    </section>
+
     <section class="section">
         <div class="container is-max-desktop">
             <!-- Abstract. -->
@@ -132,11 +166,28 @@
                     <h2 class="title is-2">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            The revolution of artificial content generation have been rapidly accelerated with the booming text to image (T2I) diffusion models. It was unprecedentedly of high-quality, diversity, and creativity that the state-of-the-art models could generate, after only less than two years of development. However, it is unfortunately that most of existing T2I models, e.g., Midjourney, Stable Diffusion, still could not be effectively communicated with natural language. This typically makes a engaging image hard to obtain without expertises in complex prompting tuning with wired words compositions, magic tags, and annotations. 
-                            Inspired by the recently released DALLE3 - a T2I model directly built-in ChatGPT that talks human language, we revisit the existing techniques endeavoring to align human intent and introduce a new task - <b>interactive text to image</b> (iT2I), where pepole can interact with LLM for interleaved high-quality image generation and question answering with stronger images and text corrspondences using natural language.
-                            In addressing the iT2I problem, we also present a simple approach that augments LLMs for iT2I with prompting techniques and off-the-shelf T2I models. 
-                            We evaluate our approach for iT2I in a variety of common use scenarios under different LLMs, e.g., ChatGPT, LLAMA, Baichuan. We demonstrate that our approach could be a convenient and low-cost way to introduce the iT2I ability for any existing LLMs and any text to image models without any training, while brings little degradation on LLMs' inherent capabilities in, e.g., question answering and code generation. 
-                            We hope this work could draw broder attentions and provide inspirations for boosting user experience in human-machine interactions alongside with the image quality of the next generation T2I models.
+                            The revolution of artificial content generation have been rapidly accelerated with the
+                            booming text to image (T2I) diffusion models. It was unprecedentedly of high-quality,
+                            diversity, and creativity that the state-of-the-art models could generate, after only less
+                            than two years of development. However, it is unfortunately that most of existing T2I
+                            models, e.g., Midjourney, Stable Diffusion, still could not be effectively communicated with
+                            natural language. This typically makes a engaging image hard to obtain without expertises in
+                            complex prompting tuning with wired words compositions, magic tags, and annotations.
+                            Inspired by the recently released DALLE3 - a T2I model directly built-in ChatGPT that talks
+                            human language, we revisit the existing techniques endeavoring to align human intent and
+                            introduce a new task - <b>interactive text to image</b> (iT2I), where pepole can interact
+                            with LLM for interleaved high-quality image generation and question answering with stronger
+                            images and text corrspondences using natural language.
+                            In addressing the iT2I problem, we also present a simple approach that augments LLMs for
+                            iT2I with prompting techniques and off-the-shelf T2I models.
+                            We evaluate our approach for iT2I in a variety of common use scenarios under different LLMs,
+                            e.g., ChatGPT, LLAMA, Baichuan. We demonstrate that our approach could be a convenient and
+                            low-cost way to introduce the iT2I ability for any existing LLMs and any text to image
+                            models without any training, while brings little degradation on LLMs' inherent capabilities
+                            in, e.g., question answering and code generation.
+                            We hope this work could draw broder attentions and provide inspirations for boosting user
+                            experience in human-machine interactions alongside with the image quality of the next
+                            generation T2I models.
                         </p>
                     </div>
                 </div>
@@ -146,21 +197,6 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="container is-max-desktop">
-            <!-- Paper video. -->
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
-                    <h2 class="title is-2">Video</h2>
-                    <div class="publication-video">
-                        <iframe src="static/Mini-DALLE3-Demo.mp4"  border: 0">  frameborder="0"
-                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-            <!--/ Paper video. -->
-        </div>
-    </section>
 
     <section class="section">
         <div class="container is-max-desktop">
@@ -172,11 +208,12 @@
 
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
-                    <p>We introduce a new task - interactive text to image (iT2I), where people can interact with LLM for inter- leaved high-quality image generation/edit/refinement and question answering with stronger images and text corre- spondences using natural language. </p>
+                    <p>We introduce a new task - interactive text to image (iT2I), where people can interact with LLM
+                        for inter- leaved high-quality image generation/edit/refinement and question answering with
+                        stronger images and text corre- spondences using natural language. </p>
                     <br>
-                    <img style="display: inline-block;width: 100%;max-height: 400px;"
-                                src="./static/images/teaser.png">
-                   
+                    <img style="display: inline-block;width: 100%;max-height: 400px;" src="./static/images/teaser.png">
+
                 </div>
             </div>
 
@@ -187,14 +224,14 @@
 
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
-                    <p>There are various instructions that could be found in an iT2I system, such as generation, editing, se- lecting, and refinement. </p>
+                    <p>There are various instructions that could be found in an iT2I system, such as generation,
+                        editing, se- lecting, and refinement. </p>
                     <br>
-                    <img style="display: inline-block;width: 100%;"
-                    src="./static/images/instruction.png">
+                    <img style="display: inline-block;width: 100%;" src="./static/images/instruction.png">
                 </div>
             </div>
 
-           
+
     </section>
 
     <section class="section">
@@ -207,14 +244,14 @@
 
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
-                    <p>we present a simple approach that augments LLMs for iT2I with prompting techniques and off-the-shelf T2I models.</p>
+                    <p>we present a simple approach that augments LLMs for iT2I with prompting techniques and
+                        off-the-shelf T2I models.</p>
                     <br>
-                    <img style="display: inline-block;width: 60%;"
-                    src="./static/images/arch.png">
+                    <img style="display: inline-block;width: 80%;" src="./static/images/arch.png">
                 </div>
             </div>
 
-       
+
     </section>
 
     <section class="section">
@@ -227,12 +264,11 @@
 
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
-                    <img style="display: inline-block;width: 100%;"
-                    src="./static/images/example.png">
+                    <img style="display: inline-block;width: 100%;" src="./static/images/example.png">
                 </div>
             </div>
 
-       
+
     </section>
 
 
@@ -271,7 +307,7 @@
         <div class="container is-max-desktop content">
             <h2 class="title">BibTeX</h2>
             <pre><code>@misc{minidalle3,
-    author={Zeqiang Lai, Wenhai Wang},
+    author={Lai, Zeqiang and Zhu, Xizhou and Dai, Jifeng and Qiao, Yu and Wang, Wenhai},
     title={Mini-DALLE3: Interactive Text to Image Generation by Prompting Large Language Models},
     year={2023},
     url={https://github.com/Zeqiang-Lai/Mini-DALLE3},
